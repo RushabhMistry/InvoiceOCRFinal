@@ -3,3 +3,4 @@ uvicorn
 tabula-py
 PyMuPDF
 pandas
+PyPDF2
