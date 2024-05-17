@@ -110,7 +110,7 @@ async def process_pdf(file: UploadFile = File(...)):
                     # Concatenate multi-line addresses into a single line
                     key_value_pairs[key] = " ".join(match.group(1).split())
                 else:
-                    key_value_pairs[key] = match.group(1)
+                    key_value_pairs[key.lower().replace(" ", "_")] = match.group(1)
     
     return key_value_pairs
 
