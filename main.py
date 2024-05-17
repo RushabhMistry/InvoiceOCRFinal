@@ -5,6 +5,7 @@ import pandas as pd
 from fastapi import FastAPI, UploadFile, File
 import uvicorn
 import math
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
