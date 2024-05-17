@@ -32,6 +32,8 @@ class KeyValues(BaseModel):
     delivery_date: str
     seller_name: str
     buyer_name: str
+    delivery_address: str
+    billing_address: str
 
 # Function to extract text from PDF using PyMuPDF
 def extract_text(pdf_path):
@@ -102,16 +104,16 @@ async def process_pdf(file: UploadFile = File(...)):
         if match:
             if key == "Currency":
                 if re.search(r"(?i)(Rs\.|₹|INR)", match.group(0)):
-                    key_value_pairs[key] = "INR"
+                    key_value_pairs[key.lower()] = "INR"
                 elif re.search(r"(?i)(USD|\$)", match.group(0)):
-                    key_value_pairs[key] = "USD"
+                    key_value_pairs[key.lower()] = "USD"
+            elif key in ["Delivery Address", "Billing Address"]:
+                # Concatenate multi-line addresses into a single line
+                key_value_pairs[key.lower().replace(" ", "_")] = " ".join(match.group(1).split())
             else:
-                if key in ["Delivery Address", "Billing Address"]:
-                    # Concatenate multi-line addresses into a single line
-                    key_value_pairs[key] = " ".join(match.group(1).split())
-                else:
-                    key_value_pairs[key.lower().replace(" ", "_")] = match.group(1)
+                key_value_pairs[key.lower().replace(" ", "_")] = match.group(1)
     
     return key_value_pairs
 
-
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)
