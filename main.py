@@ -58,7 +58,7 @@ patterns = {
     "Invoice Due Date": r"Invoice\s*Due\s*Date[:\s]*(\d{1,2}/\d{1,2}/\d{2,4})",
     "Currency": r"(?i)(?:Rs\.|₹|INR|USD|\$)",
     "Invoice Amount": r"Invoice\s*Amount[:\s]*₹?([\d.,]+)",
-    "Delivery Challan No.": r"Delivery\s*Challan\s*No\.[:\s]*([\w-]+)",
+    "Delivery Challan No": r"Delivery\s*Challan\s*No\.[:\s]*([\w-]+)",
     "Delivery Date": r"Delivery\s*Date[:\s]*(\d{1,2}/\d{1,2}/\d{2,4})",
     "Seller Name": r"Seller\s*Name[:\s]*([^\n\r]+)",
     "Buyer Name": r"Buyer\s*Name[:\s]*([^\n\r]+)",
