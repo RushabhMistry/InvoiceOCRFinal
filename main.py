@@ -52,7 +52,8 @@ def extract_tables(pdf_path):
 patterns = {
     "Order Number": r"Order\s*Number[:\s]*([\w-]+)",
     "Order Date": r"Order\s*Date[:\s]*(\d{1,2}/\d{1,2}/\d{2,4})",
-    "Invoice No.": r"Invoice\s*Number[:\s]*([\w-]+)",  # Updated pattern for invoice number
+    # "Invoice No.": r"Invoice\s*No\.[:\s]*([\w-]+)",
+    "Invoice No.": r"Invoice\s*Number[:\s]*([\w-]+)",
     "Invoice Date": r"Invoice\s*Date[:\s]*(\d{1,2}/\d{1,2}/\d{2,4})",
     "Product category": r"Product\s*Category[:\s]*([^\n\r]+)",
     "Invoice Due Date": r"Invoice\s*Due\s*Date[:\s]*(\d{1,2}/\d{1,2}/\d{2,4})",
