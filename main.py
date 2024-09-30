@@ -1,3 +1,4 @@
+# Libraries
 import tabula
 import fitz  # PyMuPDF
 import re
